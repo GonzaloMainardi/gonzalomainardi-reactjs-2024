@@ -1,38 +1,64 @@
-import React from 'react'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import CartWidget from '../CartWidget/CartWidget';
+import React from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import CartWidget from "../CartWidget/CartWidget";
+import { Link } from "react-router-dom";
+import { NavbarBrand } from "react-bootstrap";
+import { getAllCategories } from "../../services/products";
 
 const NavBar = () => {
+  const [categories, setCategories] = React.useState([]);
+  React.useEffect(() => {
+    getAllCategories()
+      .then((res) => {
+        setCategories(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
   return (
-    <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
+    <Navbar
+      expand="lg"
+      className="bg-body-tertiary"
+      bg="dark"
+      data-bs-theme="dark"
+    >
       <Container>
-        <Navbar.Brand href="#home">HI FIVE</Navbar.Brand>
+        <NavbarBrand>
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            HI FIVE
+          </Link>
+        </NavbarBrand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">NOSOTROS</Nav.Link>
-            <Nav.Link href="#link">CONTACTO</Nav.Link>
-            <NavDropdown title="PRODUCTOS" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">CELULARES</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                ROPA
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">ZAPATILLAS</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                PROMOCIONES
-              </NavDropdown.Item>
+            <NavDropdown title="CATEGORIAS" id="basic-nav-dropdown">
+              {categories.map((category) => {
+                return (
+                  <NavDropdown.Item key={category.slug}>
+                    <Link
+                      to={`/category/${category.slug}`}
+                      style={{
+                        textDecoration: "none",
+                        color: "white",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {category.name}
+                    </Link>
+                  </NavDropdown.Item>
+                );
+              })}
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
         <CartWidget />
       </Container>
     </Navbar>
-  )
-}
+  );
+};
 
-export default NavBar
-
+export default NavBar;

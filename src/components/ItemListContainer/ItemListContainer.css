@@ -1,0 +1,7 @@
+.itemListContainer {
+    color: blue;
+    font-size: 2rem;
+    text-align: center; 
+    display: flex;
+    flex-wrap: wrap
+};
