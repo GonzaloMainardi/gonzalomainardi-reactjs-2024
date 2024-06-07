@@ -7,6 +7,7 @@ import CartWidget from "../CartWidget/CartWidget";
 import { Link } from "react-router-dom";
 import { NavbarBrand } from "react-bootstrap";
 import { getAllCategories } from "../../services/products";
+import "./NavBar.css";
 
 const NavBar = () => {
   const [categories, setCategories] = React.useState([]);
@@ -20,16 +21,16 @@ const NavBar = () => {
       });
   });
   return (
-    <Navbar
-      expand="lg"
-      className="bg-body-tertiary"
-      bg="dark"
-      data-bs-theme="dark"
-    >
+    <Navbar>
       <Container>
         <NavbarBrand>
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            HI FIVE
+          <Link to="/">
+            <img
+              src="src\assets\logo_hifive.png"
+              alt="logo"
+              width={80}
+              style={{ borderRadius: 50 }}
+            />
           </Link>
         </NavbarBrand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -43,7 +44,7 @@ const NavBar = () => {
                       to={`/category/${category.slug}`}
                       style={{
                         textDecoration: "none",
-                        color: "white",
+                        color: "#004AAD",
                         textTransform: "uppercase",
                       }}
                     >

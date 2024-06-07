@@ -1,0 +1,27 @@
+.btn-group-carrito {
+    display: grid;
+    justify-content: center;
+    grid-auto-flow: column;
+    gap: 10px;
+  }
+
+.btn-group-acciones{
+    display: grid;
+    justify-content: start; /* Alinea los botones a la derecha */
+    grid-auto-flow: column; /* Coloca los botones en una fila */
+    gap: 10px; /* Espaciado opcional entre botones */
+}
+.btn{
+    font-size: 15px;
+    padding: 8px 15px;
+}
+.card-header{
+    font-size: 30px;
+    font-weight: bold;
+
+}
+.counter{
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 10px;
+}

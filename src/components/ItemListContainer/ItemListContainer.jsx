@@ -12,8 +12,8 @@ const ItemListContainer = ({ greeting, products }) => {
           <Card key={product.id} style={{ width: "18rem", margin: 10 }}>
             <Card.Img variant="top" src={product.thumbnail} />
             <Card.Body>
-              <Card.Title>{product.title}</Card.Title>
-              <Card.Text>{product.description}</Card.Text>
+              <Card.Title style={{fontSize:25}}>{product.title}</Card.Title>
+              <Card.Text style={{fontSize:18}}>{product.description}</Card.Text>
               <Button variant="primary">
                 {" "}
                 <Link
