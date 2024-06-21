@@ -9,17 +9,17 @@ export const useProductsId = (id) => {
   // const { id } = useParams();
 
   React.useEffect(() => {
-    // getProductById(itemId)
-    //   .then((res) => setProduct(res.data))
-    //   .catch((err) => console.error(err));
-    const db = getFirestore();
-    const productRef = doc(db, "products", id);
+    getProductById(itemId)
+      .then((res) => setProduct(res.data))
+      .catch((err) => console.error(err));
+    // const db = getFirestore();
+    // const productRef = doc(db, "products", id);
 
-    getDoc(productRef)
-      .then((snapshot) => {
-        setProduct({ id: snapshot.id, ...snapshot.data() });
-      })
-      .catch((error) => console.log(error))
+    // getDoc(productRef)
+    //   .then((snapshot) => {
+    //     setProduct({ id: snapshot.id, ...snapshot.data() });
+    //   })
+    //   .catch((error) => console.log(error))
   }, [id]);
 
   return { product };
