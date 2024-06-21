@@ -6,8 +6,9 @@ const Home = () => {
   const { products } = useProducts();
   return (
     <div>
+      <h3 class="titulo-principal">NUESTROS PRODUCTOS</h3>
+
       <ItemListContainer
-        greeting="¡BIENVENIDX A HI FIVE!"
         products={products}
       />{" "}
     </div>

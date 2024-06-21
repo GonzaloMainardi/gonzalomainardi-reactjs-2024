@@ -1,12 +1,13 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MainRoutes from "./routes/MainRoutes";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
-    <>
+    <CartProvider>
       <MainRoutes />
-    </>
+    </CartProvider>
   );
 }
 

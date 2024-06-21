@@ -7,7 +7,13 @@ const Category = () => {
   const { id } = useParams();
 
   const { products } = useProductsCategories(id);
-  return <ItemListContainer products={products} />;
+  return (
+    <div>
+      <h3 class="titulo-principal">PRODUCTOS POR CATEGORIA</h3>
+
+      <ItemListContainer products={products} />
+    </div>)
+  
 };
 
 export default Category;

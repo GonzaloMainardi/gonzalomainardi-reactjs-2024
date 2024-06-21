@@ -6,10 +6,12 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import "./ItemDetailContainer.css";
 import { Link } from "react-router-dom";
 
+
 const ItemDetailContainer = ({ product }) => {
-  const { count, decrement, increment, addToCart } = useCount();
+  const { cantidad, decrement, increment, confirmAdd } = useCount(product);
 
   return (
+    
     <div style={{ alignContent: "center" }}>
       <Card className="text-center">
         <Card.Header>
@@ -25,11 +27,11 @@ const ItemDetailContainer = ({ product }) => {
             <Button variant="danger" onClick={decrement}>
               -
             </Button>
-            <span className="counter">{count}</span>
+            <span className="counter">{cantidad}</span>
             <Button variant="success" onClick={increment}>
               +
             </Button>
-            <Button variant="warning" onClick={addToCart}>
+            <Button variant="warning" onClick={confirmAdd}>
               AGREGAR AL CARRITO
             </Button>
           </ButtonGroup>

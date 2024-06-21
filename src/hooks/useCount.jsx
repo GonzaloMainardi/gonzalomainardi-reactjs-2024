@@ -1,25 +1,25 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { CartContext } from "../context/CartContext";
 
-export const useCount = () => {
-  const [count, setCount] = useState(1);
+export const useCount = (product) => {
+  const { addToCart, removeFromCart } = React.useContext(CartContext);
+  const [cantidad, setCantidad] = React.useState(0);
 
   const decrement = () => {
-    if (count > 1) {
-      setCount(count - 1);
+    if (cantidad > 0) {
+      setCantidad(cantidad - 1);
+      removeFromCart(product, 1);
     }
   };
 
   const increment = () => {
-    // if (count < stock) {
-    //   setCount(count + 1);
-    // }
-    setCount(count + 1);
+    setCantidad(cantidad + 1);
+    addToCart(product, 1);
   };
 
-  const addToCart = () => {
-    alert(`Agregaste ${count} productos`);
-    setCount(1);
+  const confirmAdd = () => {
+    alert(`Agregaste ${cantidad} productos`);
   };
 
-  return { count, decrement, increment, addToCart };
+  return { cantidad, decrement, increment, confirmAdd };
 };

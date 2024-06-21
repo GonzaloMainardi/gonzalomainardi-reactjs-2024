@@ -38,3 +38,20 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+.titulo-principal {
+  color: white;
+  text-align: center;
+  background-color: #004AAD;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.carrito-vacio {
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  margin: auto 10px;
+  padding: 5px;
+  text-align: center;
+}
