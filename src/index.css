@@ -55,3 +55,17 @@ button:focus-visible {
   padding: 5px;
   text-align: center;
 }
+.navbar{
+  background-color: #004AAD;
+  text-decoration: none;
+  color: white;
+}
+.nav-dropdown{
+  color: white;
+}
+.dropdown-toggle::after{
+  color: white;
+}
+.navbar-expand .navbar-nav .nav-link {
+  color: white;
+}
