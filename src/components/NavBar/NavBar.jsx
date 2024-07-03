@@ -7,19 +7,11 @@ import CartWidget from "../CartWidget/CartWidget";
 import { Link } from "react-router-dom";
 import { NavbarBrand } from "react-bootstrap";
 import { getAllCategories } from "../../services/products";
+import { useCollectionItems } from "../../hooks/useCollectionItems";
 import "./NavBar.css";
 
 const NavBar = () => {
-  const [categories, setCategories] = React.useState([]);
-  React.useEffect(() => {
-    getAllCategories()
-      .then((res) => {
-        setCategories(res.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  });
+  const {items} = useCollectionItems("category")
   return (
     <Navbar>
       <Container>
@@ -37,7 +29,7 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavDropdown title="CATEGORIAS" id="basic-nav-dropdown">
-              {categories.map((category) => {
+              {items.map((category) => {
                 return (
                   <NavDropdown.Item key={category.slug}>
                     <Link

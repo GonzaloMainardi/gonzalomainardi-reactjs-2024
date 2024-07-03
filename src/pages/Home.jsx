@@ -1,15 +1,15 @@
 import React from "react";
 import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
-import { useProducts } from "../hooks/useProducts";
+import { useCollectionItems } from "../hooks/useCollectionItems";
 
 const Home = () => {
-  const { products } = useProducts();
+  const { items } = useCollectionItems("products");
   return (
     <div>
       <h3 class="titulo-principal">NUESTROS PRODUCTOS</h3>
 
       <ItemListContainer
-        products={products}
+        products={items}
       />{" "}
     </div>
   );

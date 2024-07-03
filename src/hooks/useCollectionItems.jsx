@@ -2,8 +2,8 @@ import React from "react";
 // import { getAllProducts } from "../services/products";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 
-export const useProducts = () => {
-  const [products, setProducts] = React.useState([]);
+export const useCollectionItems = (collectionName) => {
+  const [items, setItems] = React.useState([]);
 
   React.useEffect(() => {
     // getAllProducts()
@@ -11,15 +11,21 @@ export const useProducts = () => {
     //   .catch((err) => console.error(err));
     const db = getFirestore();
 
-    const productsCollection = collection(db, "products");
+    const productsCollection = collection(db, collectionName);
+
     getDocs(productsCollection)
       .then((snapshot) => {
-        setProducts(
+        setItems(
           snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
         );
       })
-      .catch((error) => console.log(error))
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
-  return { products };
+  return { items };
 };
