@@ -5,9 +5,11 @@ import { Button } from "react-bootstrap";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceSadTear } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
 const Cart = () => {
-  const { cart, removeFromCart, deleteFromCart } = React.useContext(CartContext);
+  const { cart, removeFromCart, deleteFromCart } =
+    React.useContext(CartContext);
 
   const removeOneItem = (item) => {
     removeFromCart(item, 1);
@@ -23,9 +25,14 @@ const Cart = () => {
     <div>
       <h3 class="titulo-principal">CARRITO DE COMPRAS</h3>
       {cart.length > 0 ? (
-        
         <div>
-          <div style={{ display: "flex", flexWrap: "wrap",justifyContent: "center"}}>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
             {cart.map((item, index) => (
               <div key={index}>
                 <Card key={item.id} style={{ width: "18rem", margin: 10 }}>
@@ -60,7 +67,28 @@ const Cart = () => {
             ))}
           </div>
           <h3 class="titulo-principal">TOTAL: ${total}</h3>
-
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Button
+              variant="success"
+              onClick={() =>
+                Swal.fire({
+                  title: "COMPRA REALIZADA CON EXITO",
+                  text: "MUCHAS GRACIAS POR CONFIAR EN HI FIVE",
+                  icon: "success",
+                  timer: 2000,
+                  showConfirmButton: false,
+                })
+              }
+            >
+              FINALIZAR COMPRA
+            </Button>
+          </div>
         </div>
       ) : (
         <h3 class="carrito-vacio">

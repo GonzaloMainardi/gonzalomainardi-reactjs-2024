@@ -16,7 +16,8 @@ const ItemDetailContainer = ({ product }) => {
       <Card className="text-center">
         <Card.Header>
           <Card.Img style={{ width: 100 }} src={product.thumbnail} />
-          {product.title}
+          <Card.Title style={{ fontSize: 25 }}>{product.title}</Card.Title>
+          
         </Card.Header>
         <Card.Body>
           <Card.Text>{product.description}</Card.Text>

@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import { NavbarBrand } from "react-bootstrap";
 import { getAllCategories } from "../../services/products";
 import { useCollectionItems } from "../../hooks/useCollectionItems";
-import "./NavBar.css";
 
 const NavBar = () => {
   const {items} = useCollectionItems("category")

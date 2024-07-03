@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { CartContext } from "../context/CartContext";
+import Toastify from 'toastify-js'
+import "toastify-js/src/toastify.css"
 
 export const useCount = (product) => {
   const { addToCart, removeFromCart } = React.useContext(CartContext);
@@ -18,7 +20,15 @@ export const useCount = (product) => {
   };
 
   const confirmAdd = () => {
-    alert(`Agregaste ${cantidad} productos`);
+    Toastify({
+      text: "PRODUCTO AGREGADO",
+      duration: 1000,
+      gravity: "top",
+      position: "center",
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      },
+    }).showToast();
   };
 
   return { cantidad, decrement, increment, confirmAdd };
